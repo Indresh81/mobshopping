@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phone Order Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    .order-form {
+      max-width: 600px;
+      margin: auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+    .order-form button{
+        display: block;
+        margin: auto;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .order-form input[type="text"],
+    .order-form input[type="number"] {
+      margin-bottom: 20px;
+    }
+    .order-form input[type="submit"] {
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+     .order-form {
+        padding: 20px;
+      }
+    }
+    
+</style>
+</head>
+<body>
+
+  <div class="order-form">
+    <h2 class="text-center">Phone Order Form</h2>
+    <form id="phoneOrderForm">
+      <div class="mb-3">
+        <label for="phoneModel" class="form-label">Select Phone Model</label>
+        <select class="form-select" id="phoneModel" required>
+          <option value="">-- Choose a model --</option>
+          <option value="NOKIA 1100">NOKIA 1100</option>
+          <option value="DEVUDA DEVUDA">DEVUDA DEVUDA</option>
+          <option value="i PHONE">i PHONE</option>
+          <option value="LANDLINE">LANDLINE</option>
+          <option value="PCO">PCO</option>
+          <option value="WAKI TAKI">WAKI TAKI</option>
+          <option value="SAMSUNG s25 ULTRA">SAMSUNG s25 ULTRA</option>
+          <option value="REDMI NOTE 14 PRO PLUS">REDMI NOTE 14 PRO PLUS</option>
+          <option value="VIVO V50">VIVO V50</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="quantity" class="form-label">Quantity</label>
+        <input type="number" class="form-control" id="quantity" min="1" max="10" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="customerName" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="customerName" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone Number</label>
+        <input type="tel" class="form-control" id="phone" pattern="[0-9]{10}" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="address" class="form-label">Shipping Address</label>
+        <textarea class="form-control" id="address" rows="3" required></textarea>
+      </div>
+
+      <button onclick="window.location.href='finalpage.html'">Place Order</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('phoneOrderForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const phone = document.getElementById('phoneModel').value;
+      const quantity = document.getElementById('quantity').value;
+      const name = document.getElementById('customerName').value;
+      const email = document.getElementById('email').value;
+      const phoneNumber = document.getElementById('phone').value;
+      const address = document.getElementById('address').value;
+
+      localStorage.setItem('orderPhone', phone);
+      localStorage.setItem('orderQuantity', quantity);
+      localStorage.setItem('orderEmail', email);
+    
+
+      alert(`Order Placed!\n\nModel: ${phone}\nQuantity: ${quantity}\nCustomer: ${name}\nEmail: ${email}\nPhone: ${phoneNumber}\nAddress: ${address}`);
+    });
+  </script>
+
+</body>
+</html>

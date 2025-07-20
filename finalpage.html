@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Confirmed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .confirmation-box {
+      max-width: 600px;
+      margin: 80px auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .confirmation-box h1 {
+      color: #28a745;
+      margin-bottom: 20px;
+    }
+    .checkmark {
+      font-size: 60px;
+      color: #28a745;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="confirmation-box">
+    <div class="checkmark">✅</div>
+    <h1>Order Confirmed!</h1>
+    <p>Thank you for your purchase. Your order has been successfully placed.</p>
+    <hr>
+    <h5>Order Summary</h5>
+    <p><strong>Order ID:</strong> <span id="orderId"></span></p>
+    <p><strong>Product:</strong> <span id="productName"></span></p>
+    <p><strong>Quantity:</strong> <span id="productQty"></span></p>
+    <p><strong>Shipping to:</strong>  <span id="productEmail"></span></p>
+    <a href="phone.html" class="btn btn-success mt-4">Continue Shopping</a>
+  </div>
+  <script>
+  // Retrieve from localStorage
+  const randomOrderId = 'ID' + Math.floor(100000 + Math.random() * 900000);
+  const phone = localStorage.getItem('orderPhone') || 'Not available';
+  const quantity = localStorage.getItem('orderQuantity') || 'Not available';
+  const email = localStorage.getItem('orderEmail') || 'Not available';
+
+  // Inject values into the HTML
+  document.getElementById('orderId').textContent = randomOrderId;
+  document.getElementById('productName').textContent = phone;
+  document.getElementById('productQty').textContent = quantity;
+  document.getElementById('productEmail').textContent = email;
+</script>
+
+</body>
+</html>
