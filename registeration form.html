@@ -1,85 +1,17 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<title>Login and Registration</title>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-    html {
-        background-color: white;
-    }
-    
-    form {
-        font-family: 'Poppins', sans-serif;
-        width: 300px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: gray;
-        color: white;
-        border-radius: 10px;
-        text-align: center;
-        box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-    }
-    input {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        box-sizing: border-box;
-        border-radius: 50px;
-    }
-    label {
-        color: black;
-        font-size: 18px;
-    }
-    button {
-        padding: 10px 20px;
-        background-color: green;
-        color: black;
-        border: none;
-        border-radius: 50px;
-        cursor: pointer;
-    }
-
-</style>
+  <meta charset="utf-8">
+  <meta http-equiv="refresh" content="0; url=registration.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redirecting — Karina Kapoor Mobiles</title>
+  <link rel="stylesheet" href="app.css">
 </head>
-
 <body>
-<center><h1 style="color: red;">LOGIN AND REGISTRATION</h1></center>
-
-<center>
-    <form id="registerationform">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username"><br>
-
-        <label for="email">Email ID:</label>
-        <input type="text" id="email" name="email"><br>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password"><br>
-
-        <label for="confirm_password">Confirm Password:</label>
-        <input type="password" id="confirm_password" name="confirm_password"><br>
-<br>
-<button type="submit">Register</button>
-    </form>
-
+  <main class="confirmation-wrap container">
+    <div class="empty-state">
+      Redirecting to registration. <a href="registration.html">Continue</a>
+    </div>
+  </main>
 </body>
-<script>
-        const form = document.getElementById("registerationform");
-        form.addEventListener("submit", function(e) {
-            e.preventDefault();
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        const confirmPassword = document.getElementById("confirm_password").value;
-        if(password!== confirmPassword) {
-            alert("Passwords do not match.");
-            return;
-        }
-        localStorage.setItem(email,password);
-        //localStorage.setItem("registeredpassword",password);
-
-        alert("Registration Successful!");
-        window.location.href = "index.html";
-        });
-</script>
 </html>

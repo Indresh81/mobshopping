@@ -1,60 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Order Confirmed</title>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
-    .confirmation-box {
-      max-width: 600px;
-      margin: 80px auto;
-      padding: 30px;
-      background-color: #fff;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .confirmation-box h1 {
-      color: #28a745;
-      margin-bottom: 20px;
-    }
-    .checkmark {
-      font-size: 60px;
-      color: #28a745;
-    }
-  </style>
+  <meta name="description" content="Your Karina Kapoor Mobiles order confirmation.">
+  <title>Order confirmed — Karina Kapoor Mobiles</title>
+  <link rel="stylesheet" href="app.css">
+  <script src="app.js" defer></script>
 </head>
-<body>
+<body data-page="confirmation" data-auth-required="true">
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Primary navigation">
+      <a class="brand" href="phone.html" aria-label="Karina Kapoor Mobiles store">
+        <span class="brand-mark" aria-hidden="true">K</span>
+        <span class="brand-name">Karina Kapoor Mobiles</span>
+      </a>
+      <div class="nav-links">
+        <a href="phone.html">Shop</a>
+        <span class="nav-user" data-auth-only><span>Hello,</span> <strong data-user></strong></span>
+        <button class="button ghost" type="button" data-logout data-auth-only>Sign out</button>
+      </div>
+    </nav>
+  </header>
 
-  <div class="confirmation-box">
-    <div class="checkmark">✅</div>
-    <h1>Order Confirmed!</h1>
-    <p>Thank you for your purchase. Your order has been successfully placed.</p>
-    <hr>
-    <h5>Order Summary</h5>
-    <p><strong>Order ID:</strong> <span id="orderId"></span></p>
-    <p><strong>Product:</strong> <span id="productName"></span></p>
-    <p><strong>Quantity:</strong> <span id="productQty"></span></p>
-    <p><strong>Shipping to:</strong>  <span id="productEmail"></span></p>
-    <a href="phone.html" class="btn btn-success mt-4">Continue Shopping</a>
-  </div>
-  <script>
-  // Retrieve from localStorage
-  const randomOrderId = 'ID' + Math.floor(100000 + Math.random() * 900000);
-  const phone = localStorage.getItem('orderPhone') || 'Not available';
-  const quantity = localStorage.getItem('orderQuantity') || 'Not available';
-  const email = localStorage.getItem('orderEmail') || 'Not available';
+  <main class="confirmation-wrap container">
+    <section class="confirmation-card" aria-labelledby="confirmation-title">
+      <div id="confirmationContent" hidden>
+        <div class="confirmation-icon" aria-hidden="true">✓</div>
+        <p class="eyebrow">Thank you for shopping with us</p>
+        <h1 id="confirmation-title">Order confirmed!</h1>
+        <p>Your order is safely recorded. Keep the order ID below for your reference.</p>
 
-  // Inject values into the HTML
-  document.getElementById('orderId').textContent = randomOrderId;
-  document.getElementById('productName').textContent = phone;
-  document.getElementById('productQty').textContent = quantity;
-  document.getElementById('productEmail').textContent = email;
-</script>
+        <div class="order-summary">
+          <h2>Order summary</h2>
+          <dl>
+            <dt>Order ID</dt>
+            <dd id="orderId">—</dd>
+            <dt>Placed on</dt>
+            <dd id="orderDate">—</dd>
+            <dt>Product</dt>
+            <dd id="productName">—</dd>
+            <dt>Quantity</dt>
+            <dd id="productQty">—</dd>
+            <dt>Total</dt>
+            <dd id="productTotal">—</dd>
+            <dt>Customer</dt>
+            <dd id="customerName">—</dd>
+            <dt>Shipping address</dt>
+            <dd id="shippingAddress">—</dd>
+          </dl>
+        </div>
 
+        <div class="actions">
+          <a class="button" href="phone.html">Continue shopping</a>
+        </div>
+      </div>
+
+      <div id="confirmationEmpty" class="empty-state" hidden>
+        We could not find that order. Return to the shop to start a new order.
+        <div class="actions actions-spaced">
+          <a class="button" href="phone.html">Back to shop</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>

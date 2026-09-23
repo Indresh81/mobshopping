@@ -1,85 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <style>
-        body {
-            padding: 250px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 60;
-            margin-left: 20px ;
-            background-image: url(food.jpg);
-            background-size: cover;
-            animation: fadeIn 1.5s ease-in;
-        }
-        .login_Box{
-            background-color: pink;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            color: black;
-            height: 300px;
-            width: 300px;
-}
-.login_Box button{ 
-    margin: 10px;
-    padding: 10px ;
-    background-color: black;
-    color: white;
-    border-radius: 25px;
-    cursor: pointer;
-    width: 250px;
-    transition: background-color 0.3s ease-in-out;
-}
-.login_Box input[type="email"],
-.login_Box input[type="password"] {
-    margin: 10px;
-    padding: 10px;
-    width: 80%;
-    border-radius: 5px;
-    transition: background-color 0.3s ease-in-out;
-}
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sign in to Karina Kapoor Mobiles and shop mobile phones.">
+  <title>Sign in — Karina Kapoor Mobiles</title>
+  <link rel="stylesheet" href="app.css">
+  <script src="app.js" defer></script>
 </head>
-<center><body>
-    <div class="login_Box">
-    
-    <form action="/login" method="post">
-        <h1>LOGIN PAGE</h1>
-        <input type="email" placeholder="Enter the email" name="Enter the email" >
-        <input type="password" placeholder="Enter the password" name="Enter the password" >
-        <button type="submit">Login</button>
-<div>
-        <br><br>
-        don't u have an account? <a href="registeration form.html">Register</a>
-    </div>
-    </form>
-    </div>
-    
-</body></center>
-<script>
-    const loginForm = document.querySelector('form');
-    loginForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = loginForm['Enter the email'].value;
-        const password = loginForm['Enter the password'].value;
-        const storedPassword = localStorage.getItem(email);
+<body data-page="login">
+  <main class="auth-page">
+    <section class="auth-visual" aria-labelledby="welcome-title">
+      <div class="auth-visual-content">
+        <a class="brand" href="index.html" aria-label="Karina Kapoor Mobiles home">
+          <span class="brand-mark" aria-hidden="true">K</span>
+          <span class="brand-name">Karina Kapoor Mobiles</span>
+        </a>
+        <div class="auth-spacer" aria-hidden="true"></div>
+        <p class="eyebrow">Your next phone starts here</p>
+        <h1 id="welcome-title">Technology that feels like you.</h1>
+        <p>Discover practical classics, flagship devices, and a few wonderfully unexpected phones — all in one friendly store.</p>
+        <div class="feature-row" aria-label="Store benefits">
+          <span class="feature-pill">Curated collection</span>
+          <span class="feature-pill">Simple checkout</span>
+          <span class="feature-pill">Order tracking</span>
+        </div>
+      </div>
+    </section>
 
-        if (storedPassword === null) {
-            alert("User not registered. Please register first.");
-        } else if (storedPassword === password) {
-            alert("Login successful!");
-            window.location.href = "phone.html"; // Redirect to next page
-         } else {
-             alert("Incorrect password. Please try again.");
-      }
-    });
-</script>
+    <section class="auth-panel" aria-labelledby="login-title">
+      <div class="auth-card">
+        <p class="eyebrow">Welcome back</p>
+        <h2 id="login-title">Sign in</h2>
+        <p>Use your account to browse the collection and place an order.</p>
+
+        <form id="loginForm" class="form-stack" novalidate>
+          <div class="field">
+            <label for="loginEmail">Email address</label>
+            <input id="loginEmail" name="email" type="email" autocomplete="email" required>
+            <span class="field-error" data-error-for="email" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="loginPassword">Password</label>
+            <input id="loginPassword" name="password" type="password" autocomplete="current-password" required>
+            <span class="field-error" data-error-for="password" aria-live="polite"></span>
+          </div>
+          <p id="loginMessage" class="form-message" role="alert" aria-live="polite"></p>
+          <button class="button full-width" type="submit">Sign in</button>
+        </form>
+
+        <p class="form-footer">New here? <a href="registration.html">Create an account</a></p>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
 </html>
